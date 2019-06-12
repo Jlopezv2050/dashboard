@@ -1,0 +1,25 @@
+version: '3'
+services:
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    volumes:
+      - ./.mysql-data/db:/var/lib/mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_DATABASE=dashboard
+      - MYSQL_ROOT_PASSWORD=admin
+
+  mysql-workbench:
+    image: jdecool/mysql-workbench
+    container_name: mysql-workbench
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./.mysql-workbench:/root/.mysql/workbench
+    network_mode: host
+    environment:
+      - DISPLAY=unix${DISPLAY}
+    
