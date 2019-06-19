@@ -1,6 +1,6 @@
 package com.jlopezv.dashboard.backend.model;
 
-enum RoleName {
+public enum RoleName {
     USER,
     ADMIN
 }
